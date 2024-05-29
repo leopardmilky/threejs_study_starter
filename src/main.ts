@@ -68,7 +68,18 @@ class App {
     this.renderer.setSize(width, height);
   }
 
+  private update(time: number) {
+    time *= 0.001 // ms -> s
+
+    const cube = this.cube;
+    if(cube) {
+      cube.rotation.x = time;
+      cube.rotation.y = time;
+    }
+  }
+
   private render(time: number) {
+    this.update(time);
     this.renderer.render(this.scene, this.camera!);
   }
 }
